@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Baloo Chettan', cursive;
+  background-color: lightgray;
+}
+
+.board {
+  display: block;
+  width: 80vw;
+  margin: 20px auto 0 auto;
+}
+
+.board h1 {
+  text-align: center;
+}
+
+.board .button-create-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.board .button-create-column .create-column {
+  width: 140px;
+  height: 35px;
+  background-color: #82E1B3;
+  border: none;
+  border-radius: 50%;
+}
+
+.board .column-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border: 1px dotted black;
+}
+
+.board .column-container div {
+  border-right: 1px dotted #000000;
+  width: 33.333%;
+}
+
+.board .column-container div .column {
+  width: 100%;
+  text-align: center;
+  height: auto;
+}
+
+.board .column-container div .column h3 {
+  margin-top: 20px;
+}
+
+.board .column-container div .column ul {
+  min-height: 200px;
+  height: auto;
+  margin-top: 10px;
+  list-style-type: none;
+  text-align: center;
+  min-height: 60px;
+}
+
+.board .column-container div .column ul li .card {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+}
+
+.board .column-container div .column ul li .card p {
+  color: white;
+  text-align: center;
+  margin-right: 15px;
+  margin-left: 15px;
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  border: none;
+  border-radius: 15px;
+  background-color: green;
+}
+
+.board .column-container div .column ul li .card .btn-delete {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.board .column-container div .column .add-card {
+  margin-top: 80%;
+  width: 80px;
+  height: 30px;
+  background-color: #FFBBAD;
+  border: none;
+  border-radius: 25px;
+  margin-bottom: 15px;
+}
+
+.board .column-container div .column .btn-delete {
+  width: 30px;
+  height: 30px;
+  background-color: #FFEFE8;
+  border: none;
+  border-radius: 25px;
+}
+/*# sourceMappingURL=style.css.map */
