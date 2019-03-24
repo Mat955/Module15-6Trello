@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function randomString() {
         var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
         var str = '';
-        for (var i = 0; i < 1; i++) {
+        for (var i = 0; i < 10; i++) {
             str += chars[Math.floor(Math.random() * chars.length)];
         }
         return str;
@@ -93,8 +93,14 @@ document.addEventListener('DOMContentLoaded', function () {
         // PINNING NEW FUNCTION FOR NEW COLUMN
         document.querySelector('#board .create-column').addEventListener('click', function () {
             var name = prompt('Enter a column name');
-            var column = new Column(name);
-            board.addColumn(column);
+            if (name === '') {
+                alert('This is not a valid board name. Please enter a name.')
+            } else if (name === null) {
+                return;
+            } else {
+                var column = new Column(name);
+                board.addColumn(column);
+            }
         });
     }
 
