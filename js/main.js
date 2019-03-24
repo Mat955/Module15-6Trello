@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // MAKING OBJECT BOARD
     var board = {
         name: 'Kanban Board',
+        element: document.querySelector('#board .column-container'),
         addColumn: function (column) {
             this.element.appendChild(column.element);
             initSortable(column.id);
         },
-        element: document.querySelector('#board .column-container')
     };
 
     // FUNCTION OF CARRY CARDS
@@ -95,27 +95,34 @@ document.addEventListener('DOMContentLoaded', function () {
             group: 'kanban',
             sort: true
         });
-
-        // PINNING NEW FUNCTION FOR NEW COLUMN
-        document.querySelector('#board .create-column').addEventListener('click', function () {
-            var name = prompt('Enter a column name');
-            if (name === '') {
-                alert('This is not a valid board name. Please enter a name.');
-            } else if (name === null) {
-                return;
-            } else {
-                var column = new Column(name);
-                board.addColumn(column);
-            }
-        });
     }
 
+    Sortable.create(board.element, {
+        group: 'kanban-columns',
+        sort: true
+    });
+
+    // PINNING NEW FUNCTION FOR NEW COLUMN
+    document.querySelector('#board .create-column').addEventListener('click', function () {
+        var columnName = prompt('Enter a column name');
+        if (columnName === '') {
+            alert('This is not a valid board name. Please enter a name.');
+        } else if (columnName === null) {
+            return;
+        } else {
+            var column = new Column(columnName);
+            board.addColumn(column);
+        }
+    });
+
     // CREATING COLUMNS
+    var ideaColumn = new Column('Ideas');
     var todoColumn = new Column('To do');
     var doingColumn = new Column('Doing');
     var doneColumn = new Column('Done');
 
     // ADDING COLUMNS TO THE BOARD
+    board.addColumn(ideaColumn);
     board.addColumn(todoColumn);
     board.addColumn(doingColumn);
     board.addColumn(doneColumn);
@@ -123,8 +130,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // CREATING CARDS
     var card1 = new Card('New task');
     var card2 = new Card('Create kanban boards');
+    var card3 = new Card('Your Ideas');
+    var card4 = new Card('Change my position');
 
     // ADDING CARDS TO COLUMNS
     todoColumn.addCard(card1);
     doingColumn.addCard(card2);
+    ideaColumn.addCard(card3);
+    ideaColumn.addCard(card4);
 });
