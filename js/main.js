@@ -32,15 +32,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // HOOK EVENT DELETING AND ADDING COLUMN
-        this.element.querySelector('.column').addEventListener('click', function (event) {
-            if (event.target.classList.contains('btn-delete')) {
-                self.removeColumn();
-            }
-            if (event.target.classList.contains('add-card')) {
-                self.addCard(new Card(prompt('Enter the name of the card')));
+        this.element.querySelector('.add-card').addEventListener('click', function () {
+            var cardName = prompt('Enter the name of the card');
+            if (cardName === '') {
+                alert('This is not a valid card name. Please add correct name');
+            } else if (cardName === null) {
+                return;
+            } else {
+                self.addCard(new Card(cardName));
             }
         });
+        this.element.querySelector('.btn-delete').addEventListener('click', function () {
+            self.removeColumn();
+        });
     }
+
     Column.prototype = {
         addCard: function (card) {
             this.element.querySelector('ul').appendChild(card.element);
@@ -94,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('#board .create-column').addEventListener('click', function () {
             var name = prompt('Enter a column name');
             if (name === '') {
-                alert('This is not a valid board name. Please enter a name.')
+                alert('This is not a valid board name. Please enter a name.');
             } else if (name === null) {
                 return;
             } else {

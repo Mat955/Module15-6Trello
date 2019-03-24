@@ -39,6 +39,7 @@
     "onchange": "^5.2.0"
   },
   "dependencies": {
+    "jslint": "^0.12.1",
     "mkdirp": "^0.5.1"
   }
 }
