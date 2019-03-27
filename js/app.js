@@ -8,7 +8,7 @@ function generateTemplate(name, data, basicElement) {
     return element;
 }
 
-var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
+var baseUrl = 'https://cors-anywhere.herokuapp.com/https://kodilla.com/pl/bootcamp-api';
 var myHeaders = {
     'X-Client-Id': '3872',
     'X-Auth-Token': '079e524b2cabf044543427029ab99cb8'
