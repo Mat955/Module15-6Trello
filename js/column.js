@@ -13,7 +13,12 @@ function Column(id, name) {
         }
 
         if (event.target.classList.contains('add-card')) {
-            var cardName = prompt('Enter correct name of the card');
+            var cardName = prompt('Enter name of the card');
+            if (cardName === '') {
+                return alert('This is not a valid name. Try again!');
+            } else if (cardName === null) {
+                return;
+            }
             event.preventDefault();
 
             var data = new FormData();
@@ -49,7 +54,7 @@ Column.prototype = {
             .then(function (resp) {
                 return resp.json();
             })
-            .then(function (resp) {
+            .then(function () {
                 self.element.parentNode.removeChild(self.element);
             });
     }

@@ -15,11 +15,17 @@ function initSortable(id) {
     });
 }
 
-document.querySelector('#board .create-column').addEventListener('click', function () {
-    var name = prompt('Enter a column name');
-    var data = new FormData();
 
-    data.append('name', name);
+document.querySelector('#board .create-column').addEventListener('click', function () {
+    var columnName = prompt('Enter a column name');
+    if (columnName === '') {
+        return alert('This is not a valid column name. Try Again');
+    } else if (columnName === null) {
+        return;
+    }
+
+    var data = new FormData();
+    data.append('name', columnName);
 
     fetch(baseUrl + '/column', {
             method: 'POST',
@@ -30,7 +36,7 @@ document.querySelector('#board .create-column').addEventListener('click', functi
             return resp.json();
         })
         .then(function (resp) {
-            var column = new Column(resp.id, name);
+            var column = new Column(resp.id, columnName);
             board.addColumn(column);
         });
 });
